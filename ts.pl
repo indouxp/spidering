@@ -7,8 +7,8 @@ binmode STDOUT, ':utf8';
 binmode STDERR, ':utf8';
 
 my $msg;
-$msg = '$B8=:_!"4m81>pJs$O=P$F$*$j$^$;$s$,!"(B';
+$msg = '現在、危険情報は出ておりませんが、';
 my $content = "";
-if ($content =~ /$B8=:_!"4m81>pJs$O=P$F$*$j$^$;$s$,!"(B/) {
+if ($content =~ /現在、危険情報は出ておりませんが、/) {
   prnt "ERR\n";
 }

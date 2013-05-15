@@ -12,18 +12,18 @@ use Encode;
 my $id = shift @ARGV|| '074';
 
 my $url = "http://www.anzen.mofa.go.jp/info/info4.asp?id=$id";
-my $msg = '$B$rFI$_9~$a$^$;$s$G$7$?!#(B';
+my $msg = 'を読み込めませんでした。';
 
 my $content = get($url);
 die "$url$msg" unless defined $content;
 
 $content = decode('shiftjis', $content);
 $content =~ s/<<!--(.*?)-->//gs;
-$content =~ / SELECTED>$B"'(B([^<]+)</;
+$content =~ / SELECTED>▼([^<]+)</;
 print "$1\n";
-if ($content =~ /$B8=:_!"4m81>pJs$O=P$F$*$j$^$;$s$,!"(B/) {
-  print "  $B4m81>pJs$O=P$F$$$^$;$s!#(B\n";
+if ($content =~ /現在、危険情報は出ておりませんが、/) {
+  print "  危険情報は出ていません。\n";
 } else {
-  print "  $B4m81>pJs$,=P$F$$$^$9!#(B\n";
+  print "  危険情報が出ています。\n";
 }
-print "  $B>\:Y$O(Bhttp://www.anzen.mofa.go.jp/$B$r8+$F$/$@$5$$!#(B\n";
+print "  詳細はhttp://www.anzen.mofa.go.jp/を見てください。\n";
