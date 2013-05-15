@@ -12,10 +12,9 @@ use Encode;
 my $id = shift @ARGV|| '074';
 
 my $url = "http://www.anzen.mofa.go.jp/info/info4.asp?id=$id";
-my $msg = 'を読み込めませんでした。';
 
 my $content = get($url);
-die "$url$msg" unless defined $content;
+die "$url を読み込めませんでした。" unless defined $content;
 
 $content = decode('shiftjis', $content);
 $content =~ s/<<!--(.*?)-->//gs;
